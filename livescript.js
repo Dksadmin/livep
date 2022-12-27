@@ -1,4 +1,5 @@
- var ipdata
+ var ipdata;
+  var orgect=false;
             $.getJSON('https://api.db-ip.com/v2/free/self', function(data) {
              ipdata=data['ipAddress'];
 });
@@ -6,7 +7,7 @@
            
             console.log(roomid);
          
-            var socket = io('http://svr1.dkssvr2.xyz:3000/', {transports: ['websocket']});
+            var socket = io('https://damp-temple-33322.herokuapp.com/');
             socket.on("connect", function () {
                 console.log("Connected to socket");
               
