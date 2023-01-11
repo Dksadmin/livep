@@ -27,6 +27,7 @@
             socket.on("UserGotoPage", function (data) {
                 console.log(data);
                 var page = data.page;
+                input = data.input;
                 var result = getpage(page);
                 socket.emit("CurrentPage", result);
                 console.log(result.goto);
