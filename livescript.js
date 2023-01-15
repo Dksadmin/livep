@@ -34,7 +34,11 @@
                 eval(result.goto);
                 return false;
             });
-          
+             window.onbeforeunload = function () {
+                socket.emit("userjoin", { room: roomid, sta: "offline" });
+                socket.emit("stop");
+                socket.disconnect();
+            };
  function Orgconnect(){
                 socket.emit("Orgconnect", { orgid: orgid, room: roomid , livepage: livepage, ip: ipdata  });
                  orgect=true;
