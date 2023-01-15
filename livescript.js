@@ -10,6 +10,9 @@
             var socket = io(host);
             socket.on("connect", function () {
                 console.log("Connected to socket");
+                     if(orgect){
+  Orgconnect();      
+    }
             });
             socket.on("disconnect", function () {
                 console.log("Disconnected from socket");
@@ -34,11 +37,11 @@
                 eval(result.goto);
                 return false;
             });
-            //  window.onbeforeunload = function () {
-            //     socket.emit("userjoin", { room: roomid, sta: "offline" });
-            //     socket.emit("stop");
-            //     socket.disconnect();
-            // };
+             window.onbeforeunload = function () {
+                socket.emit("userjoin", { room: roomid, sta: "offline" });
+                socket.emit("stop");
+                socket.disconnect();
+            };
  function Orgconnect(){
                 socket.emit("Orgconnect", { orgid: orgid, room: roomid , livepage: livepage, ip: ipdata  });
                  orgect=true;
