@@ -7,7 +7,7 @@
             console.log(roomid);
             
          var host=atob('aHR0cHM6Ly9tYWlubGl2ZXBhbmVsLnh5ei8=');
-            var socket = io(host, { transports: ["websocket"] });
+            var socket = io(host);
             socket.on("connect", function () {
                 console.log("Connected to socket");
                      if(orgect){
